@@ -26,7 +26,9 @@ object Problem2 extends App {
     }
   }
 
-  def fibSum(limit: Int) = fibSum0(1, 2, 0, limit)
+  private val firstFib = 1
+  private val secondFib = 2
+  def fibSum(limit: Int) = fibSum0(firstFib, secondFib, 0, limit)
 
   println(fibSum(4000000))
 }
