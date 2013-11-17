@@ -16,14 +16,17 @@ package problem6
 object Problem6 extends App {
   def calc(n: Int) = {
 
-    val sum = 1 to n sum
+    def square = { x: Int => x * x }
 
-    val squareOfSum = sum * sum
+    val squareOfSum = square(1 to n sum)
 
-    val sumOfSquares = 1 to n map (x => x * x) sum
+    val sumOfSquares = 1 to n map square sum
 
     squareOfSum - sumOfSquares
   }
 
   println(calc(100))
+
+  // One-line solution is also possible :))
+  // println(({n:Int =>   ({x:Int => x * x})(1 to n sum) - (1 to n map (x => x * x) sum)    })(100))
 }
