@@ -14,7 +14,7 @@ object Problem9 extends App {
     a <- 1 to n
     b <- a to n
     c = n - a - b
-    if a * a + b * b == c * c
+    if c > 0 && a * a + b * b == c * c
   } yield (a * b * c)
 
   println(calc(1000)(0))
