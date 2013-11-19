@@ -10,7 +10,7 @@ object Problem16 extends App {
   private def bigPow(n: Int, pow: Int) = BigInt(n).pow(pow)
 
   // Sum of digits of BigInt
-  private def sumDigits(b: BigInt) = b.toString.toArray.map{c:Char => c - '0'.toInt}.sum
+  private def sumDigits(b: BigInt) = b.toString.toArray.map(c => c.asDigit).sum
 
   def calc(pow: Int) = sumDigits(bigPow(2, pow))
 

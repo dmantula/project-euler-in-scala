@@ -23,7 +23,7 @@ object Problem20 extends App {
   }
 
   // Sum of digits of BigInt
-  private def sumDigits(b: BigInt) = b.toString.toArray.map{c:Char => c - '0'.toInt}.sum
+  private def sumDigits(b: BigInt) = b.toString.toArray.map{c => c.asDigit}.sum
 
   println(sumDigits(fact(100)))
 }

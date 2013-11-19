@@ -2,7 +2,6 @@ package problem8
 
 import scala.annotation.tailrec
 
-import utils.CharUtils.charToInt
 import Math.max
 
 /**
@@ -43,7 +42,6 @@ object Problem8 extends App {
     prod0(arr, num, pos, 1)
   }
 
-
   def calc(in: String, num: Int): Int = {
     @tailrec
     def calc0(arr: Array[Int], num: Int, pos: Int, currMax: Int): Int = {
@@ -53,7 +51,7 @@ object Problem8 extends App {
         calc0(arr, num, pos + 1, max(currMax, prod(arr, num, pos)))
     }
 
-    val arr = in map charToInt toArray
+    val arr = in map {c => c.asDigit} toArray
 
     calc0(arr, num, 0, 0)
   }
