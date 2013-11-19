@@ -1,6 +1,5 @@
 package problem5
 
-import utils.math.GcdLcm
 import scala.annotation.tailrec
 
 /**
@@ -9,14 +8,23 @@ import scala.annotation.tailrec
  * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
  */
 object Problem5 extends App {
+  // Greatest common divisor
+  @tailrec
+  def gcd(a: Long, b: Long): Long =
+    if (b == 0)
+      a
+    else
+      gcd(b, a % b)
+
+  // Least common multiple
+  def lcm(a: Long, b: Long) = (a * b) / gcd(a, b)
 
   @tailrec
   private def find0(i: Int, acc: Long, limit: Int): Long =
     if (i > limit)
       acc
     else
-      find0(i + 1, GcdLcm.lcm(i, acc), limit)
-
+      find0(i + 1, lcm(i, acc), limit)
 
   def find(limit: Int) = find0(1, 1, limit)
 
