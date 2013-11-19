@@ -19,14 +19,16 @@ object Problem5 extends App {
   // Least common multiple
   def lcm(a: Long, b: Long) = (a * b) / gcd(a, b)
 
-  @tailrec
-  private def find0(i: Int, acc: Long, limit: Int): Long =
+  def find(limit: Int) = {
+    @tailrec
+    def rec(i: Int, acc: Long, limit: Int): Long =
     if (i > limit)
       acc
     else
-      find0(i + 1, lcm(i, acc), limit)
+      rec(i + 1, lcm(i, acc), limit)
 
-  def find(limit: Int) = find0(1, 1, limit)
+    rec(1, 1, limit)
+  }
 
   println(find(20))
 }

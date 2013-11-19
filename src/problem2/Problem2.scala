@@ -13,22 +13,25 @@ import scala.annotation.tailrec
  */
 object Problem2 extends App {
 
-  @tailrec
-  private def fibSum0(i1: Int, i2: Int, sum: Int, limit: Int):Int = {
-    if (i2 > limit)
-      sum
-    else {
-      // Increment should be
-      // 0 if (i2 % 2 == 1)
-      // or i2 if (i2 % 2 == 0)
-      val incr = i2 * (1 - i2 % 2)
-      fibSum0(i2, i1+i2, sum + incr, limit)
-    }
-  }
+  def fibSum(limit: Int) = {
+    val firstFib = 1
+    val secondFib = 2
 
-  private val firstFib = 1
-  private val secondFib = 2
-  def fibSum(limit: Int) = fibSum0(firstFib, secondFib, 0, limit)
+    @tailrec
+    def rec(i1: Int, i2: Int, acc: Int, threshold: Int): Int = {
+      if (i2 > threshold)
+        acc
+      else {
+        // Increment should be
+        // 0 if (i2 % 2 == 1)
+        // or i2 if (i2 % 2 == 0)
+        val increment = i2 * (1 - i2 % 2)
+        rec(i2, i1 + i2, acc + increment, threshold)
+      }
+    }
+
+    rec(firstFib, secondFib, 0, limit)
+  }
 
   println(fibSum(4000000))
 }

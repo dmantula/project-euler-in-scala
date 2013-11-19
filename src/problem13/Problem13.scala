@@ -107,13 +107,13 @@ import scala.io.Source.fromFile
 53503534226472524250874054075591789781264330331690
  */
 object Problem13 extends App {
-  def calc(in: String) = {
-    val sum = in.split('\n') map (x => BigInt(x)) sum
+  def calc(in: Iterator[String]) = {
+    val sum = in map {BigInt(_)} sum
 
     sum.toString.substring(0, 10)
   }
 
-  val in = fromFile("src/problem13/in.txt").getLines.reduceLeft(_+_)
+  val in = fromFile("src/problem13/in.txt").getLines
 
   println(calc(in))
 }
